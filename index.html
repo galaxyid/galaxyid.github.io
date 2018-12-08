@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Galaxy ID</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+		<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+		<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<h1>
+			<u>Galaxy Identification</u>
+		</h1>
+		<div class="question shadow">
+			<h3>Which of the following best matches the galaxy's shape?</h3>
+			<div class="row">
+				<ul class="column answer">
+					<li><h5>M83</h5></li>
+					<li><img alt="M83" src="img/spiral_m83.jpg"></li>
+					<li><a class="button" id="spiralbtn">Spiral</a></li>
+				</ul>
+				<ul class="column answer">
+					<li><h5>NGC 4589</h5></li>
+					<li><img alt="NGC 4589" src="img/elliptical_ngc4589.jpg"></li>
+					<li><a class="button" id="ellipticalbtn">Elliptical</a></li>
+				</ul>
+				<ul class="column answer">
+					<li><h5>NGC 1569</h5></li>
+					<li><img alt="NGC 1569" src="img/irregular_ngc1569.png"></li>
+					<li><a class="button" id="irregularbtn">Irregular</a></li>
+				</ul>
+			</div>
+		</div>
+
+        <div class="shadow question">
+            <h3>Does it have a Galactic Bulge?</h3>
+            <div class="row">
+				<ul class="column answer">
+					<li><a class="button" id="bulgebtn">Yes</a></li>
+				</ul>
+				<ul class="column answer">
+					<li><a class="button" id="nobulgebtn">No</a></li>
+				</ul>
+			</div>
+        </div>
+
+        <div class="shadow question">
+            <h3>Does it have a Galactic Disk?</h3>
+            <div class="row">
+                <ul class="column answer">
+                    <li><a class="button" id="diskbtn">Yes</a></li>
+                </ul>
+                <ul class="column answer">
+                    <li><a class="button" id="nodiskbtn">No</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="shadow question">
+            <h3>Does it have a Galactic Halo?</h3>
+            <div class="row">
+                <ul class="column answer">
+                    <li><a class="button" id="halobtn">Yes</a></li>
+                </ul>
+                <ul class="column answer">
+                    <li><a class="button" id="nohalobtn">No</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="shadow question">
+            <h3>Does it have Spiral Arms?</h3>
+            <div class="row">
+                <ul class="column answer">
+                    <li><a class="button" id="armsbtn">Yes</a></li>
+                </ul>
+                <ul class="column answer">
+                    <li><a class="button" id="noarmsbtn">No</a></li>
+                </ul>
+            </div>
+        </div>
+        
+		<div class="results">
+			<table>
+				<thead>
+					<tr>
+						<th>Galaxy Type</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="spiral bulge disk halo arms">
+						<td>Spiral Galaxy</td>
+					</tr>
+					<tr class="spiral bulge disk halo arms">
+						<td>Barred Spiral Galaxy</td>
+					</tr>
+					<tr class="elliptical nobulge nodisk halo noarms">
+						<td>Elliptical Galaxy</td>
+					</tr>
+					<tr class="elliptical bulge disk nohalo noarms">
+						<td>Lenticular Galaxy</td>
+					</tr>
+					<tr class="irregular nobulge nodisk halo noarms">
+						<td>Irregular Galaxy</td>
+					</tr>
+			</table>
+		</div>
+	<footer>
+		<p>Images from NASA's <a href="http://hubblesite.org/">hubblesite.org</a></p>
+	</footer>
+	<script src="id.js"></script>
+	</body>
+</html>
