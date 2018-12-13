@@ -1,20 +1,4 @@
-var spiralbtn = document.getElementById("spiralbtn");
-var ellipticalbtn = document.getElementById("ellipticalbtn");
-var irregularbtn = document.getElementById("irregularbtn");
-
-var nobulgebtn = document.getElementById("nobulgebtn");
-var bulgebtn = document.getElementById("bulgebtn");
-
-var nodiskbtn = document.getElementById("nodiskbtn");
-var diskbtn = document.getElementById("diskbtn");
-
-var nohalobtn = document.getElementById("nohalobtn");
-var halobtn = document.getElementById("halobtn");
-
-var noarmsbtn = document.getElementById("noarmsbtn");
-var armsbtn = document.getElementById("armsbtn");
-
-function disable(trait) {
+function disable(trait, btn) {
 	var elements = document.getElementsByClassName(trait)
 	var i;
 	
@@ -23,48 +7,71 @@ function disable(trait) {
 	}	
 }
 
-// Question 1
-spiralbtn.onclick = function(){
-	disable("elliptical");
-	disable("irregular");
-}
-ellipticalbtn.onclick = function(){
-	disable("spiral");
-	disable("irregular");
-}
-irregularbtn.onclick = function(){
-	disable("spiral");
-	disable("elliptical");
+function enable(trait, btn) {
+	var elements = document.getElementsByClassName(trait)
+	var i;
+	
+	for (i = 0; i < elements.length; i++) {
+		elements[i].style.textDecoration = "none";
+	}	
 }
 
-// Question 2
-nobulgebtn.onclick = function(){
-    disable("bulge");
-}
-bulgebtn.onclick = function(){
-    disable("nobulge");
+var choices = [
+    ["spiral", "elliptical", "irregular"],
+    ["bulge", "nobulge"],
+    ["disk", "nodisk"],
+    ["halo", "nohalo"],
+    ["arms", "noarms"],
+]
+
+// reg_btn(question_number)
+function reg_btn(answers, q_num) {
+    answer = answers[q_num];
+    var button1 = document.getElementById(answer[0] + "btn");
+    var button2 = document.getElementById(answer[1] + "btn");
+    var button3 = document.getElementById(answer[2] + "btn");
+
+    button1.onclick = function(){
+        enable(answer[0], button1);
+        disable(answer[1], button1);
+        disable(answer[2], button1);
+
+        button1.style.backgroundColor = "#252525";
+        button2.style.backgroundColor = "#9b4dca";
+
+        if (button3 !=null){
+            button3.style.backgroundColor = "#9b4dca";
+        }
+    }
+    button2.onclick = function(){
+        disable(answer[0], button2);
+        enable(answer[1], button2);
+        disable(answer[2], button2);
+        
+        button2.style.backgroundColor = "#252525";
+        button1.style.backgroundColor = "#9b4dca";
+
+        if (button3 !=null){
+            button3.style.backgroundColor = "#9b4dca";
+        }
+    }
+
+    if (button3 != null) {
+        button3.onclick = function(){
+            disable(answer[0], button3);
+            disable(answer[1], button3);
+            enable(answer[2], button3);
+
+            button3.style.backgroundColor = "#252525";
+            button2.style.backgroundColor = "#9b4dca";
+
+            button1.style.backgroundColor = "#9b4dca";
+            
+        }
+    }
 }
 
-// Question 3
-nodiskbtn.onclick = function(){
-    disable("disk");
-}
-diskbtn.onclick = function(){
-    disable("nodisk");
-}
-
-// Question 4
-nohalobtn.onclick = function(){
-    disable("halo");
-}
-halobtn.onclick = function(){
-    disable("nohalo");
-}
-
-// Question 5
-noarmsbtn.onclick = function(){
-    disable("arms");
-}
-armsbtn.onclick = function(){
-    disable("noarms");
+var i;
+for (i = 0; i <= 4; i++) {
+    reg_btn(choices, i);
 }
