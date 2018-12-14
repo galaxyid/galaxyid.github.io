@@ -1,3 +1,4 @@
+// DONT BE LOOKIN AT MY JAVASCRIPT
 function disable(trait, btn) {
 	var elements = document.getElementsByClassName(trait)
 	var i;
@@ -24,6 +25,9 @@ var choices = [
     ["arms", "noarms"],
 ]
 
+var enabled_color = "#252525";
+var disabled_color = "#9b4dca";
+
 // reg_btn(question_number)
 function reg_btn(answers, q_num) {
     answer = answers[q_num];
@@ -32,27 +36,26 @@ function reg_btn(answers, q_num) {
     var button3 = document.getElementById(answer[2] + "btn");
 
     button1.onclick = function(){
-        enable(answer[0], button1);
         disable(answer[1], button1);
         disable(answer[2], button1);
 
-        button1.style.backgroundColor = "#252525";
-        button2.style.backgroundColor = "#9b4dca";
+        button1.style.backgroundColor = enabled_color;
+        console.log(button1.disabled);
+        button2.style.backgroundColor = disabled_color;
 
         if (button3 !=null){
-            button3.style.backgroundColor = "#9b4dca";
+            button3.style.backgroundColor = disabled_color;
         }
     }
     button2.onclick = function(){
         disable(answer[0], button2);
-        enable(answer[1], button2);
         disable(answer[2], button2);
         
-        button2.style.backgroundColor = "#252525";
-        button1.style.backgroundColor = "#9b4dca";
+        button2.style.backgroundColor = enabled_color;
+        button1.style.backgroundColor = disabled_color;
 
         if (button3 !=null){
-            button3.style.backgroundColor = "#9b4dca";
+            button3.style.backgroundColor = disabled_color;
         }
     }
 
@@ -60,12 +63,10 @@ function reg_btn(answers, q_num) {
         button3.onclick = function(){
             disable(answer[0], button3);
             disable(answer[1], button3);
-            enable(answer[2], button3);
 
-            button3.style.backgroundColor = "#252525";
-            button2.style.backgroundColor = "#9b4dca";
-
-            button1.style.backgroundColor = "#9b4dca";
+            button3.style.backgroundColor = enabled_color;
+            button2.style.backgroundColor = disabled_color;
+            button1.style.backgroundColor = disabled_color;
             
         }
     }
