@@ -49,3 +49,13 @@ footer {
 	padding-left: 2vh;
 	padding-right: 2vh;
 }
+.cancel {
+    text-decoration: line-through;
+}
+
+.enabledbtn { 
+    background-color: #252525;
+}
+.disabledbtn {
+    background-color: #9b3dca;
+}

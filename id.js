@@ -1,23 +1,21 @@
 // DONT BE LOOKIN AT MY JAVASCRIPT
 function disable(trait, btn) {
-	var elements = document.getElementsByClassName(trait)
-	var i;
+	let elements = document.getElementsByClassName(trait)
 	
-	for (i = 0; i < elements.length; i++) {
-		elements[i].style.textDecoration = "line-through";
+	for (let i = 0; i < elements.length; i++) {
+        elements[i].classList.add("cancel");
 	}	
 }
 
 function enable(trait, btn) {
-	var elements = document.getElementsByClassName(trait)
-	var i;
+	let elements = document.getElementsByClassName(trait)
 	
-	for (i = 0; i < elements.length; i++) {
-		elements[i].style.textDecoration = "none";
+	for (let i = 0; i < elements.length; i++) {
+        elements[i].classList.remove("cancel");
 	}	
 }
 
-var choices = [
+let choices = [
     ["spiral", "elliptical", "irregular"],
     ["bulge", "nobulge"],
     ["disk", "nodisk"],
@@ -25,37 +23,32 @@ var choices = [
     ["arms", "noarms"],
 ]
 
-var enabled_color = "#252525";
-var disabled_color = "#9b4dca";
-
-// reg_btn(question_number)
 function reg_btn(answers, q_num) {
     answer = answers[q_num];
-    var button1 = document.getElementById(answer[0] + "btn");
-    var button2 = document.getElementById(answer[1] + "btn");
-    var button3 = document.getElementById(answer[2] + "btn");
+    let button1 = document.getElementById(answer[0] + "btn");
+    let button2 = document.getElementById(answer[1] + "btn");
+    let button3 = document.getElementById(answer[2] + "btn");
 
     button1.onclick = function(){
         disable(answer[1], button1);
         disable(answer[2], button1);
+        button1.classList.add("enabledbtn");
 
-        button1.style.backgroundColor = enabled_color;
-        console.log(button1.disabled);
-        button2.style.backgroundColor = disabled_color;
+        button2.disabled = true;
 
         if (button3 !=null){
-            button3.style.backgroundColor = disabled_color;
+            button3.disabled = true;
         }
     }
     button2.onclick = function(){
         disable(answer[0], button2);
         disable(answer[2], button2);
+        button2.classList.add("enabledbtn");
         
-        button2.style.backgroundColor = enabled_color;
-        button1.style.backgroundColor = disabled_color;
+        button1.disabled = true;
 
         if (button3 !=null){
-            button3.style.backgroundColor = disabled_color;
+            button3.disabled = true;
         }
     }
 
@@ -63,16 +56,14 @@ function reg_btn(answers, q_num) {
         button3.onclick = function(){
             disable(answer[0], button3);
             disable(answer[1], button3);
+            button3.classList.add("enabledbtn");
 
-            button3.style.backgroundColor = enabled_color;
-            button2.style.backgroundColor = disabled_color;
-            button1.style.backgroundColor = disabled_color;
-            
+            button1.disabled = true;
+            button2.disabled = true;
         }
     }
 }
 
-var i;
-for (i = 0; i <= 4; i++) {
+for (let i = 0; i <= 4; i++) {
     reg_btn(choices, i);
 }
